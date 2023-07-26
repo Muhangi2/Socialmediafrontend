@@ -1,0 +1,22 @@
+.trendcard{
+ background-color: white;
+ display: flex;
+ flex-direction: column;
+ border-radius: 5px;
+ padding: 1rem;
+ gap: 1rem;
+}
+.trends{
+    
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem
+}
+.trends>span:nth-of-type(1){
+    font-weight: bold;
+    
+}
+.trends>span:nth-of-type(2){
+    font-size:14px;
+    
+}

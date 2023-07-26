@@ -1,0 +1,48 @@
+.infocard{
+   background-color:rgb(240, 234, 234);
+   border-radius: 6px;
+   padding: 1rem; 
+   gap:1rem;
+   display: flex;
+   flex-direction: column;
+   box-shadow: 0 0 2px rgba(0,0,0.9);
+}
+.infocard>div{
+    padding:0.5rem;
+}
+.infocardheader{
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+.infostatus{
+    display: flex;
+    gap:0.5rem
+}
+.infojob{
+    display: flex;
+    gap:0.5rem
+}
+.infolocation{
+    display: flex;
+    gap:0.5rem
+}
+.first_span{
+    font-weight: bold;
+}
+.profilebutton{
+    display: flex;
+    justify-content: flex-end;
+}
+.logout{
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+}
+.logout:hover{
+    background-color: white;
+    font-weight: bold;
+    color:black;
+    border:1px solid black;
+}

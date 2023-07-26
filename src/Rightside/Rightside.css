@@ -1,0 +1,27 @@
+.rightside{
+    display:flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.rightside_icons{
+    display: flex;
+    gap:1rem;
+    margin-top: 1rem;
+    /* background-color: green; */
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+.reactionicon{
+ color:rgb(207, 69, 207)
+}
+.trendbutton{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.trendbuttondiv{
+   align-self: center;
+   
+}

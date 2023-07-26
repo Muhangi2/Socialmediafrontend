@@ -1,0 +1,47 @@
+:root {
+  --black: rgb(25, 26, 27);
+  --grey: rgb(198, 242, 230);
+  --blue: rgb(85, 85, 233);
+  --input:#e4eea3;
+}
+
+
+.App {
+  color: var(--black);
+  overflow: hidden;
+  padding: 1rem 1rem;
+  background-color: var(--grey)
+}
+
+.blur {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  filter: blur(70px)
+}
+
+.appblur>:nth-child(1) {
+  top: -18%;
+  right: 0;
+}
+
+.appblur>div:nth-child(2) {
+  top:36%;
+  left:-8rem;
+}
+.button{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(240, 166, 28);
+  border-radius: 6px;
+  outline: none;
+  border:none ;
+  color:white;
+  transition:all 100ms ease-in-out;
+}
+/* ::-webkit-scrollbar{
+  display: none;
+} */

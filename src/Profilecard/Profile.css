@@ -1,0 +1,100 @@
+.profile {
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 5px 5px rgb(0, 0, 0.9);
+    background-color:inherit;
+}
+
+.profile_images {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.profile_images>img:nth-of-type(1) {
+    width: 100%;
+
+}
+
+.profile_images>img:nth-of-type(2) {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 2px 2px rgb(0, 0, 24);
+    bottom: -3rem;
+}
+
+.profiledetail {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.profiledetail>span:nth-of-type(1) {
+    font-weight: bold;
+}
+
+.follow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.follow>div {
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.followers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.following {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerdiv {
+    height: 150%;
+    border-left: 2px solid orange;
+}
+
+hr {
+    color: green;
+}
+
+hr{
+    color: green;
+    width: 80%;
+    height: 1px;
+    /* Set a specific height for the hr element */
+}
+.profile>span{
+  font-size: 16px;
+  font-weight: bold;
+  align-self: center;
+  padding: 4px;
+  margin-bottom: 2rem;
+}

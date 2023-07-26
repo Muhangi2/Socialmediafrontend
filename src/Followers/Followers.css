@@ -1,0 +1,45 @@
+.followerscard{
+    border-radius: 4px ;
+    gap:1rem;
+    flex-direction: column;
+    display: flex;
+    padding: 2rem;
+    box-shadow: 0px 0px 3px black;
+    margin-bottom: 1rem;
+}
+.follower{
+    display:flex;
+    align-items: center;
+    justify-content:space-evenly;
+    gap:1rem
+}
+.follower>div{
+    display:flex;
+    gap:2rem;
+}
+.name{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image{
+    width:3.5rem;
+    height:3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.followerbutton{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height:2rem;
+
+}
+.followerbutton:hover{
+    color:lightgray;
+    background-color: blue;
+    border:2px solid black
+}
+.more_followers{
+    text-align: center;
+}
