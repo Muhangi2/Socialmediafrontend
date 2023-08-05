@@ -1,3 +1,4 @@
+import PostModel from "../models/postmodel.js";
 import UserModel from "../models/usermodel.js";
 import bcrypt from "bcrypt";
 
@@ -99,3 +100,4 @@ export const unfollowuser = async (req, res) => {
     }
   }
 };
+

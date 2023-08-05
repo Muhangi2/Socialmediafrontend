@@ -1,7 +1,18 @@
 import express from "express";
-import { addpost } from "../controllers/postcontroller.js";
+import {
+  addpost,
+  getpost,
+  updatepost,
+  deletepost,
+  likingpost,
+} from "../controllers/postcontroller.js";
 
 const postrouter = express.Router();
 
-postrouter.get("/add", addpost);
+postrouter.post("/addpost", addpost);
+postrouter.get("/:id/getpost", getpost);
+postrouter.put("/:id/updatepost", updatepost);
+postrouter.delete("/:id/deletepost", deletepost);
+postrouter.put("/:id/liking", likingpost);
+// postrouter.put("/:id/unliking", likingpost);
 export default postrouter;
