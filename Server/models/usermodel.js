@@ -28,8 +28,8 @@ const userSchema = new mongoose.Schema(
     livesin: String,
     worksAt: String,
     relationship: String,
-    followers: [],
     following: [],
+    followers: [],
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 import { response } from "express";
 import PostModel from "../models/postmodel.js";
 import UserModel from "../models/usermodel.js";
+import mongoose from "mongoose";
 
 //lets do the crud functionality
 
@@ -80,12 +81,39 @@ export const likingpost = async (req, res) => {
 };
 
 //fetchtimelineposts
-const fetchposts = async (req, res) => {
-  const id = req.params.id;
+export const fetchposts = async (req, res) => {
+  const userId = req.params.id;
   try {
     const ownedposts = await PostModel.find({ userId: userId });
-    const followedposts=await UserModel.aggregate([
-      
-    ])
-  } catch (error) {}
+    const followedposts = await UserModel.aggregate([
+      {
+        $match: {
+          _id: new mongoose.Types.ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: "posts",
+          localField: "following",
+          foreignField: "userId",
+          as: "followedposts",
+        },
+      },
+      {
+        $project: {
+          followedposts: 1,
+          _id: 0,
+        },
+      },
+    ]);
+    res.status(200).json(
+      ownedposts.concat(...followedposts[0].followedposts).sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      })
+    );
+    console.error(ownedposts);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(404).json(error);
+  }
 };
