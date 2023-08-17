@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import authrouter from "./routes/auth.js";
 import userrouter from "./routes/usercontroller.js";
 import postrouter from "./routes/postrouter.js";
+import messagerouter from "./routes/message.js";
+import chatrouter from "./routes/chat.js";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -27,3 +29,5 @@ mongoose
 app.use("/auth", authrouter);
 app.use("/user", userrouter);
 app.use("/post", postrouter);
+app.use("/chat", chatrouter);
+app.use("/message", messagerouter);
