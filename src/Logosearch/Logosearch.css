@@ -8,12 +8,15 @@
     display: flex;
     border-radius: 10px;
     padding: 5px;
+    width:100%
 }
 
 .search>input {
     background-color: transparent;
     border: none;
     outline: none;
+ 
+   
 }
 
 .searchicon {

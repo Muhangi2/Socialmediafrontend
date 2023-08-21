@@ -3,3 +3,8 @@
     grid-template-columns: 21rem auto 18rem;
     gap:1rem;
 }
+.profilecard{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}

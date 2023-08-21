@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Trends.css";
 import { trends } from "../../Data/Trends.js";
+import Sharemodal from "../../Upperpost/sharemodal/Sharemodal";
+
 const Trends = () => {
-  // console.log(trends)
+  const [modalopen, setModalOpen] = useState(false);
   return (
     <div className="trendcard">
       <h2>Trends</h2>
       {trends.map((data, index) => {
-       return (
+        return (
           <div className="trends" key={index}>
             <span>#{data.name}</span>
             <span>{data.shares} shares</span>
@@ -15,7 +17,8 @@ const Trends = () => {
         );
       })}
       <div className="trendbuttondiv">
-      <button className="button trendbutton" >Share</button>
+        <button className="button trendbutton" onClick={()=>{setModalOpen(true)}}>Share</button>
+        <Sharemodal modalopen={modalopen} setModalOpen={setModalOpen} />
       </div>
     </div>
   );
