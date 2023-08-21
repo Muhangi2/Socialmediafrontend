@@ -1,0 +1,62 @@
+.auth{
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+
+}
+.leftside{
+    display: flex;
+    align-items: center;
+    gap:2rem
+}
+.essay{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.essay>span{
+font-weight: bold;
+font-size: 16px;
+}
+.rightside{
+    width: 400px;
+}
+form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:1rem;
+    gap:1rem;
+    border-radius: 5px;
+   box-shadow: 0 0 1px rgb(0,0,0.2) ;
+}
+.form_control{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    justify-content: center;
+}
+.form_control>input{
+    height: 40px;
+    border-radius: 5px;
+    width: 100%;
+   border: none;
+   background-color: gainsboro;
+   padding: 0.5rem;
+}
+#btn{
+    padding:0.5rem;
+    font-size: 18px;
+    font-weight: bold;
+    color:black;
+    padding-left:2rem;
+    padding-right: 2rem;
+}
+.title{
+    text-align: center;
+}

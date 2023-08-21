@@ -1,4 +1,5 @@
 import "./App.css";
+import Auth from "./Auth/Auth";
 import Home from "./Home/Home";
 import Profilepage from "./Profilepage/Profilepage";
 
@@ -10,9 +11,9 @@ function App() {
         <div className="blur"></div>
         <div className="blur"></div>
       </div>
-      {/* pagess */}
-      <Home />
+      {/* <Home /> */}
       {/* <Profilepage /> */}
+      <Auth />
     </div>
   );
 }
