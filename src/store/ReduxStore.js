@@ -5,7 +5,7 @@ import {
   } from "redux";
   import thunk from "redux-thunk";
   import { reducers } from "../reducers";
-  
+
   function saveToLocalStorage(store) {
     try {
         const serializedStore = JSON.stringify(store);

@@ -1,9 +1,9 @@
 import * as Authapi from "../requests/Authrequest";
-export const logindetails = (inputdata) => async (dispatch) => {
+
+export const logindetails = (inputfield) => async (dispatch) => {
   dispatch({ type: "AUTH_START" });
   try {
-    const { data } = Authapi.login(inputdata);
-   
+    const { data } = Authapi.login(inputfield);
     dispatch({ type: "AUTH_SUCCESS", data: data });
   } catch (error) {
     console.log(error);
@@ -12,15 +12,13 @@ export const logindetails = (inputdata) => async (dispatch) => {
 };
 
 //signup function
-export const signupdetails = (inputdata) => async (dispatch) => {
-    dispatch({ type: "AUTH_START" });
-    try {
-      const { data } = Authapi.signup(inputdata);
-     
-      dispatch({ type: "AUTH_SUCCESS", data: data });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: "AUTH_FAILURE" });
-    }
-  };
-  
+export const signupdetails = (inputfield) => async (dispatch) => {
+  dispatch({ type: "AUTH_START" });
+  try {
+    const { data } = Authapi.signup(inputfield);
+   
+    dispatch({ type: "AUTH_SUCCESS", data: data });
+  } catch (error) {
+    dispatch({ type: "AUTH_FAILURE" });
+  }
+};

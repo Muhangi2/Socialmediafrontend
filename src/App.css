@@ -45,3 +45,7 @@
 ::-webkit-scrollbar{
   display: none;
 }
+button:disabled {
+  background-color: silver;
+  pointer-events: none;
+}

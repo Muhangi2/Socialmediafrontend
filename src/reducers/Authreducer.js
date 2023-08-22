@@ -11,7 +11,7 @@ const initialstate = {
                 ...state,loading:true,error:false
             }
             case "AUTH_SUCCESS":
-                localStorage.setItem("profile",JSON.stringify({...state,authdata:action?.data}))
+                localStorage.setItem("profile",JSON.stringify({...action?.data}))
                 return {
                     ...state,authdata:action.data,loading:false,error:false
                 } 

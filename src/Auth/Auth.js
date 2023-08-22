@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import { IoLogoTwitter } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logindetails, signupdetails } from "../actioncreators/Authcreator";
 const Auth = () => {
   const dispatch = useDispatch();
   const [signup, setSignup] = useState(true);
+  const loading = useSelector(
+    (initialstate) => initialstate.authreducer.loading
+  );
+  console.log(loading);
   const [inputfield, setinputfield] = useState({
     lastname: "",
     firstname: "",
@@ -120,8 +124,8 @@ const Auth = () => {
             )}
           </div>
           <div className="form_control">
-            <button className="button" id="btn" type="submit">
-              {signup ? "Signup" : "Login"}
+            <button className="button" id="btn" type="submit" disabled={loading}>
+              {loading ? "loading...." : signup ? "Signup" : "Login"}
             </button>
           </div>
         </form>
