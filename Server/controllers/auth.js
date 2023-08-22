@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 //for registering
 export const registeruser = async (req, res) => {
   console.log("req.body:", req.body);
-  const { username, password, firstname, lastname } = req.body;
+  const { username, password, firstname, secondname } = req.body;
 
   const salt = await bcrypt.genSalt(9);
   const hashpassword = await bcrypt.hash(password, salt);
@@ -12,7 +12,7 @@ export const registeruser = async (req, res) => {
     username,
     password: hashpassword,
     firstname,
-    lastname,
+    secondname,
   });
 
   try {
@@ -21,6 +21,7 @@ export const registeruser = async (req, res) => {
     res.status(200).json(newuser);
   } catch (error) {
     res.status(500).json({ message: error.message });
+    console.log(error.message);
   }
 };
 //for loging in

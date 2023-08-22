@@ -7,11 +7,12 @@ import userrouter from "./routes/usercontroller.js";
 import postrouter from "./routes/postrouter.js";
 import messagerouter from "./routes/message.js";
 import chatrouter from "./routes/chat.js";
+import cors from "cors"
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
+app.use(cors())
 dotenv.config();
 
 mongoose
