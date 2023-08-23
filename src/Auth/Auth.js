@@ -6,9 +6,7 @@ import { logindetails, signupdetails } from "../actioncreators/Authcreator";
 const Auth = () => {
   const dispatch = useDispatch();
   const [signup, setSignup] = useState(true);
-  const loading = useSelector(
-    (initialstate) => initialstate.authreducer.loading
-  );
+  const loading = useSelector((state) => state.authreducer.loading);
   console.log(loading);
   const [inputfield, setinputfield] = useState({
     lastname: "",
@@ -29,8 +27,9 @@ const Auth = () => {
 
     if (signup) {
       inputfield.password === inputfield.confirmpassword
-        ? dispatch(signupdetails(inputfield))
-        : setConfirmpassword(true);
+        ? dispatch({ type: "AUTH_SUCCESS", data: inputfield })
+        : // dispatch(signupdetails(inputfield))
+          setConfirmpassword(true);
     } else {
       dispatch(logindetails(inputfield));
     }
@@ -124,7 +123,11 @@ const Auth = () => {
             )}
           </div>
           <div className="form_control">
-            <button className="button" id="btn" type="submit" disabled={loading}>
+            <button
+              className="button"
+              id="btn"
+              type="submit"
+              disabled={loading}>
               {loading ? "loading...." : signup ? "Signup" : "Login"}
             </button>
           </div>

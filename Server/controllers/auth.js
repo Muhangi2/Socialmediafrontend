@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 //for registering
 export const registeruser = async (req, res) => {
+  console.log(req.body)
   const salt = await bcrypt.genSalt(9);
   const hashpassword = await bcrypt.hash(req.body.password, salt);
   req.body.password = hashpassword;
@@ -25,7 +26,7 @@ export const registeruser = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({user,token});
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error.message);
@@ -39,10 +40,15 @@ export const login = async (req, res) => {
     //lets check if the the password matches
     if (user) {
       const validity = await bcrypt.compare(password, user.password);
-      validity
-        ? res.status(200).json(user)
-        : res.status(500).json("user name doesnt match with the password");
-    } else {
+
+      //checking the validty 
+      if (!validity) {
+        res.status(500).json("user name doesnt match with the password");
+      } else {
+      //token for login
+        const token = jwt.sign({ username: user.username, id: user._id }, process.env.TOKEN_STRING, { expiresIn: "1h" });
+         res.status(200).json({ user, token });
+      }
       res.status(403).json("user isnot found");
     }
     //catch block of login
