@@ -7,11 +7,12 @@ import mongoose from "mongoose";
 
 //adding post
 export const addpost = async (req, res) => {
-  const newuser = new PostModel(req.body);
-  console.log(req.body)
+  const newpost = new PostModel(req.body);
+  console.log(req.body);
   try {
-    await newuser.save();
-    res.status(200).json("newpost added");
+    const newposts = await newpost.save();
+    console.log(newposts);
+    res.status(200).json(newposts);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -70,7 +71,8 @@ export const likingpost = async (req, res) => {
   try {
     const post = await PostModel.findById(id);
     if (!post.likes.includes(userId)) {
-      await post.updateOne({ $push: { likes: userId } });
+      const liking = await post.updateOne({ $push: { likes: userId } });
+      console.log(liking);
       res.status(200).json("post liked");
     } else {
       await post.updateOne({ $pull: { likes: userId } });
