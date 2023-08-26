@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 //adding post
 export const addpost = async (req, res) => {
   const newuser = new PostModel(req.body);
+  console.log(req.body)
   try {
     await newuser.save();
     res.status(200).json("newpost added");

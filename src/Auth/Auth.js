@@ -7,7 +7,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const [signup, setSignup] = useState(true);
   const loading = useSelector((state) => state.authreducer.loading);
-  console.log(loading);
+  // console.log(loading);
   const [inputfield, setinputfield] = useState({
     lastname: "",
     firstname: "",
@@ -19,22 +19,21 @@ const Auth = () => {
   const handlechange = (e) => {
     setinputfield({ ...inputfield, [e.target.name]: e.target.value });
   };
+ const [confirmpassword, setConfirmpassword] = useState(false);
 
-  const [confirmpassword, setConfirmpassword] = useState(false);
-
+  ///submitting the form
   const handlesubmit = (e) => {
     e.preventDefault();
 
     if (signup) {
       inputfield.password === inputfield.confirmpassword
-        ? dispatch({ type: "AUTH_SUCCESS", data: inputfield })
-        : // dispatch(signupdetails(inputfield))
-          setConfirmpassword(true);
+        ? dispatch(signupdetails(inputfield))
+        : setConfirmpassword(true);
     } else {
       dispatch(logindetails(inputfield));
     }
   };
-
+//resetin the forms
   const reset = () => {
     setConfirmpassword(false);
     setinputfield({
