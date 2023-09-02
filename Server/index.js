@@ -18,9 +18,8 @@ app.use(cors());
 dotenv.config();
 
 // app.use(express.static("public"));
-app.use(express.static('public'));
-app.use('/images', express.static('images'));
-
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
 
 mongoose
   .connect(process.env.MONGO_DB, {

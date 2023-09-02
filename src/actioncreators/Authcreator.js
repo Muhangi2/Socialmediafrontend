@@ -4,7 +4,7 @@ export const logindetails = (inputfield) => async (dispatch) => {
   dispatch({ type: "AUTH_START" });
   try {
     const { data } = await Authapi.login(inputfield); // use await here
-    dispatch({ type: "AUTH_SUCCESS", data: data }); // use payload here
+    dispatch({ type: "AUTH_SUCCESS", data: data}); // use payload here
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAILURE", data: error }); // use payload here
@@ -18,9 +18,13 @@ export const signupdetails = (inputfield) => async (dispatch) => {
   try {
     const { data } = await Authapi.signup(inputfield);
     console.log(data); // use await here
-    dispatch({ type: "AUTH_SUCCESS", data: data }); // use payload here
+    dispatch({ type: "AUTH_SUCCESS", data: data}); // use payload here
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAILURE", data: error }); // use payload here
   }
 };
+export const logout = () => async (dispatch) => {
+  dispatch({ type: "LOGOUT" });
+};
+

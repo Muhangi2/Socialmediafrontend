@@ -6,37 +6,32 @@ import { FaComments } from "react-icons/fa";
 import { FaPaperPlane } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { likecreator } from "../actioncreators/postcreator";
+import { likepost } from "../requests/postrequests";
+
 const Postss = ({ data, id }) => {
   //states
-  console.log(id);
-  const authdata = useSelector((state) => state.authreducer.authdata.user);
-  console.log(authdata._id);
-  console.log(data.likes?.length);
-  const [like, setLike] = useState(data.likes?.includes(authdata._id));
-  console.log(like);
+  const authdata = useSelector((state) => state?.authreducer?.authdata?.user);
+  const [like, setLike] = useState(data.likes?.includes(authdata?._id));
   const [likes, setLikes] = useState(data.likes?.length);
-  console.log(likes);
-
   const serverpublic = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log(serverpublic);
   const handleclick = () => {
     setLike((prev) => !prev);
-    likecreator(id, authdata._id);
+    likepost(data?._id, authdata?._id);
     like ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
-
   return (
     <div className="postss" key={id}>
       <div className="details">
-        <span>{data.name}</span>
-        <span>{data.description}</span>
+        {" "}
+        <span>{data?.name}</span> <span>{data?.description}</span>
       </div>
       <img
-        src={data.image ? serverpublic + data.image : serverpublic + ""}
+        src={data?.image ? serverpublic + data?.image : serverpublic + ""}
         alt=""
       />
       <div className="reactions">
         <div onClick={handleclick}>
+          {" "}
           {like ? (
             <FaThumbsDown className="reactionicon" />
           ) : (

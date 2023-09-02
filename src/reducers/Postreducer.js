@@ -1,3 +1,5 @@
+import { FaHospitalUser } from "react-icons/fa";
+
 const initialState = {
   posts: [],
   loading: false,
@@ -10,7 +12,7 @@ const postreducer = (state = initialState, action) => {
     case "ADDING_POST_START":
       return {
         ...state,
-        uploading: true,
+        uploading: false,
         error: false,
       };
     case "ADDING_POST":
@@ -21,6 +23,19 @@ const postreducer = (state = initialState, action) => {
         error: false,
       };
     case "ADDING_POST_FAILED":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "LIKING_POST":
+      return {
+        ...state,
+        posts: [...state, action.data],
+        loading: false,
+        error: false,
+      };
+    case "LIKING_FAILURE":
       return {
         ...state,
         loading: false,

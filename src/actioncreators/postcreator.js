@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/user-event/dist/utils";
 import * as postdata from "../requests/postrequests";
 
 export const postcreator = (newpost) => async (dispatch) => {
@@ -16,11 +17,10 @@ export const postcreator = (newpost) => async (dispatch) => {
 };
 export const likecreator = (id, userId) => async (dispatch) => {
   try {
-    const liking = postdata.likepost(id);
+    const liking = await postdata.likepost(id, userId);
     dispatch({ type: "LIKING_POST", data: liking });
-    console.log(liking);
   } catch (error) {
-    console.log(error);
-    dispatch({ type: "LIKING_FAILURE", data: error }); // use payload here
+    console.error("Error in likecreator:", error);
+    dispatch({ type: "LIKING_FAILURE", data: error });
   }
 };

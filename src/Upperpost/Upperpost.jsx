@@ -17,9 +17,10 @@ const Upperpost = () => {
   const imageref = useRef();
   const description = useRef();
   //lets get the state inorder to get the user i
-  const authdata = useSelector((state) => state.authreducer.authdata.user);
-  console.log(authdata);
-  const uploading = useSelector((state) => state.postreducer.uploading);
+  const { user } = useSelector((state) => state?.authreducer?.authdata);
+  console.log(user);
+
+  const uploading = useSelector((state) => state.postreducer?.uploading);
   console.log(uploading);
   // event function
   const handleimage = (event) => {
@@ -33,9 +34,9 @@ const Upperpost = () => {
   //am adding the the image to the formdata object
   const handlesubmit = (e) => {
     e.preventDefault();
-
+    console.log(user?._id);
     const newpost = {
-      userId: authdata._id,
+      userId: user?._id,
       description: description.current.value,
     };
     if (image) {
@@ -61,9 +62,18 @@ const Upperpost = () => {
     description.current.value = "";
   };
 
+  const serverpublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="postshare">
-      <img src={hazard} alt="" />
+      <img
+        src={
+          user?.coverPicture
+            ? serverpublic + user?.coverPicture
+            : serverpublic + "setupp.jpeg"
+        }
+        alt=""
+      />
       <div>
         <input
           type="text"
@@ -109,7 +119,7 @@ const Upperpost = () => {
         {image && (
           <div className="previewimage">
             <AiOutlineClose className="close" onClick={() => setImage(null)} />
-            <img src={URL.createObjectURL(image.image)} alt="" />
+            <img src={URL.createObjectURL(image?.image)} alt="" />
           </div>
         )}
       </div>

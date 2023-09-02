@@ -30,7 +30,10 @@ function App() {
           element={user ? <Navigate to="../home" /> : <Auth />}
         />
 
-        {/* <Route path="/profile" element={<Profilepage />} /> */}
+        <Route
+          path="/profile/:id"
+          element={user ? <Profilepage /> : <Navigate to="../auth" />}
+        />
       </Routes>
     </div>
   );
