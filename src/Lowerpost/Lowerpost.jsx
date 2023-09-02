@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Lowerpost.css";
 import { postsdata } from "../Data/Lowepostsdata";
 import Postss from "./Postss";
+import { useDispatch, useSelector } from "react-redux";
+import { getTimelineposts } from "../actioncreators/Timelinecreator";
+import { useParams } from "react-router-dom";
 const Lowerpost = () => {
-  console.log(postsdata);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authreducer?.authdata);
+  let posts = useSelector((state) => state.postreducer?.posts);
+  const params = useParams();
+  console.log(user);
+  console.log(posts);
+  useEffect(() => {
+    getTimelineposts(user?._id);
+  }, []);
+
+  if (!posts) return "No posts";
+  if (params.id) posts = posts.filter((post) => post?.userId === params.id);
   return (
     <div className="lowerpost">
-      {postsdata.map((post, id) => {
-        return (
-          //i have to pass in the data as prop
-          //and of course plus the id
-          <Postss data={post} id={id} />
-        );
+      {posts.map((post, id) => {
+        return <Postss data={post} id={id} />;
       })}
     </div>
   );

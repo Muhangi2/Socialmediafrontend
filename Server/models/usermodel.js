@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    lastname: {
+    secondname: {
       type: String,
       required: true,
     },
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
     about: String,
     livesin: String,
     worksAt: String,
-    relationship: String,
+    status: String,
     following: [],
     followers: [],
   },

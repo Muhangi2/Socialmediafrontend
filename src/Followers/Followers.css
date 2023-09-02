@@ -43,3 +43,15 @@
 .more_followers{
     text-align: center;
 }
+.unfollowerbutton{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height:2rem;
+   background-color: purple;
+
+}
+.unfollowerbutton:hover{
+    color:lightgray;
+    background-color: blue;
+    border:2px solid rgb(0, 0, 0)
+}

@@ -1,32 +1,44 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import { IoLogoTwitter } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { logindetails, signupdetails } from "../actioncreators/Authcreator";
 const Auth = () => {
+  const dispatch = useDispatch();
   const [signup, setSignup] = useState(true);
+  const loading = useSelector((state) => state.authreducer.loading);
+  // console.log(loading);
   const [inputfield, setinputfield] = useState({
-    secondname: "",
+    lastname: "",
+    firstname: "",
     username: "",
     password: "",
     confirmpassword: "",
   });
+
   const handlechange = (e) => {
     setinputfield({ ...inputfield, [e.target.name]: e.target.value });
   };
+ const [confirmpassword, setConfirmpassword] = useState(false);
 
-  const [confirmpassword, setConfirmpassword] = useState(false);
-
+  ///submitting the form
   const handlesubmit = (e) => {
     e.preventDefault();
+
     if (signup) {
-      if (inputfield.password !== inputfield.confirmpassword)
-        setConfirmpassword(true);
+      inputfield.password === inputfield.confirmpassword
+        ? dispatch(signupdetails(inputfield))
+        : setConfirmpassword(true);
+    } else {
+      dispatch(logindetails(inputfield));
     }
   };
+//resetin the forms
   const reset = () => {
     setConfirmpassword(false);
     setinputfield({
       firstname: "",
-      secondname: "",
+      lastname: "",
       username: "",
       password: "",
       confirmpassword: "",
@@ -48,7 +60,7 @@ const Auth = () => {
             <div className="form_control">
               <input
                 type="text"
-                name=" firstname"
+                name="firstname"
                 placeholder=" firstname"
                 onChange={handlechange}
                 value={inputfield.firstname}
@@ -110,8 +122,12 @@ const Auth = () => {
             )}
           </div>
           <div className="form_control">
-            <button className="button" id="btn" type="submit">
-              {signup ? "Signup" : "Login"}
+            <button
+              className="button"
+              id="btn"
+              type="submit"
+              disabled={loading}>
+              {loading ? "loading...." : signup ? "Signup" : "Login"}
             </button>
           </div>
         </form>

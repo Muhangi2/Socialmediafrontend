@@ -10,7 +10,8 @@
   color: var(--black);
   overflow: hidden;
   padding: 1rem 1rem;
-  background-color: var(--grey)
+  background-color: var(--grey);
+  height:100vh;
 }
 
 .blur {
@@ -44,4 +45,8 @@
 }
 ::-webkit-scrollbar{
   display: none;
+}
+button:disabled {
+  background-color: silver;
+  pointer-events: none;
 }

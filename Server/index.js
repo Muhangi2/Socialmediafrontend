@@ -7,12 +7,19 @@ import userrouter from "./routes/usercontroller.js";
 import postrouter from "./routes/postrouter.js";
 import messagerouter from "./routes/message.js";
 import chatrouter from "./routes/chat.js";
+import cors from "cors";
+import uploadrouter from "./routes/Uploadfile.js";
 
 const app = express();
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
+app.use(cors());
 dotenv.config();
+
+// app.use(express.static("public"));
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
 
 mongoose
   .connect(process.env.MONGO_DB, {
@@ -31,3 +38,4 @@ app.use("/user", userrouter);
 app.use("/post", postrouter);
 app.use("/chat", chatrouter);
 app.use("/message", messagerouter);
+app.use("/file", uploadrouter);
